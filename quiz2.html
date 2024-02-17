@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Finance Quiz</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lavenderblush;
+    }
+    
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+      font-size: large;
+    }
+    
+    #quiz {
+      margin-bottom: 20px;
+    }
+    
+    .question {
+      margin-bottom: 10px;
+    }
+    
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    #results {
+      margin-top: 20px;
+    }
+    .topic{
+        text-align: center;
+        text-decoration:underline;
+        color: blue;
+        font-size: 40px;
+    }
+    </style>
+    
+<!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+    
+    <h1 class="topic">Quiz on Corporate Finance</h1>
+<div class="quiz-container">
+  <div id="quiz"></div>
+  <button id="submit">Submit</button>
+</div>
+<div id="results"></div>
+<script>
+    //JavaScript (quiz.js):
+    
+    //javascript
+    const quizData = [
+      {
+        question: 'Q.1) What is the main focus of corporate finance?',
+        options: ['Investment decisions', 'Marketing strategies', 'Human resource management', 'Production processes'],
+        answer: 'Investment decision'
+      },
+      {
+        question: 'Q.2) What is capital budgeting in corporate finance?',
+        options: ['Managing short-term assets and liabilities', 'Selecting investment projects ', 'Analyzing financial risks', 'Determining optimal capital structure'],
+        answer: 'Selecting investment projects '
+      },
+      {
+        question: 'Q.3) What does capital structure management involve?',
+        options: ['Evaluating potential investment projects', 'Analyzing financial metrics', 'Balancing debt and equity financing', 'Managing short-term financing'],
+        answer: 'Balancing debt and equity financing '
+      },
+      {
+        question: 'Q.4) What is the focus of working capital management?',
+        options: ['Evaluating investment opportunities', 'Analyzing financial risks', 'Managing cash, accounts receivable, and inventory', 'Assessing long-term financing options'],
+        answer: 'Managing cash, accounts receivable, and inventory'
+      },
+      {
+        question: 'Q.5) Why is liquidity risk an important consideration for businesses?',
+        options: ['To encourage quick asset turnover', 'To maximize short-term investment returns', 'To increase reliance on long-term financing', 'To ensure easy access to funds for operational needs'],
+        answer: 'To ensure easy access to funds for operational needs'
+      },
+      {
+        question: 'Q.6) What does financial risk management involve in corporate finance?',
+        options: ['Balancing the benefits of debt with the costs', 'Analyzing investment opportunities and estimating cash flows', 'Assessing risks and using financial metrics to make investment decisions', 'Evaluating and selecting investment projects'],
+        answer: 'Assessing risks and using financial metrics to make investment decisions'
+      },
+      {
+        question: 'Q.7) Which activity falls under capital structure management in corporate finance?',
+        options: ['Determining the optimal mix of debt and equity financing', 'Estimating cash flows for projects', 'Issuing bonds or loans', 'Analyzing investment opportunities'],
+        answer: 'Determining the optimal mix of debt and equity financing'
+      },
+      {
+        question: 'Q.8) Which criteria are typically preferred when selecting projects for investment?',
+        options: ['Negative NPV, low IRR, and long payback periods', 'Variable NPV, moderate IRR, and variable payback periods', 'Positive NPV, low IRR, and long payback periods', 'Positive NPV, high IRR, and short payback periods'],
+        answer: 'Positive NPV, high IRR, and short payback periods'
+      }
+    ];
+    const quizContainer = document.getElementById('quiz');
+    const submitButton = document.getElementById('submit');
+    const resultsContainer = document.getElementById('results');
+    
+    function buildQuiz() {
+      const output = [];
+    
+      quizData.forEach((currentQuestion, questionNumber) => {
+        const options = [];
+    
+        for (const option of currentQuestion.options) {
+          options.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${option}">
+              ${option}
+            </label>`
+          );
+        }
+    
+        output.push(
+          `<div class="question"><br>${currentQuestion.question}</div>
+          <div class="options">${options.join('')}</div>`
+        );
+      });
+    
+      quizContainer.innerHTML = output.join('');
+    }
+    
+    function showResults() {
+      const answerContainers = quizContainer.querySelectorAll('.options');
+      let score = 0;
+    
+      quizData.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selectedOption = answerContainer.querySelector(`input[name="question${questionNumber}"]:checked`).value;
+    
+        if (selectedOption === currentQuestion.answer) {
+          score++;
+        }
+      });
+    
+      resultsContainer.innerHTML = `You scored ${score} out of ${quizData.length}`;
+    }
+    
+    buildQuiz();
+    
+    submitButton.addEventListener('click', showResults);
+    </script>
+    
+<!-- <script src="quiz.js"></script> -->
+</body>
+</html>
+
+
+<!-- CSS (styles.css): -->
+
+<!-- css -->
+
+
+<!-- This is a simple quiz app with three questions. You can expand it by adding more questions to the quizData array in the JavaScript file. -->
