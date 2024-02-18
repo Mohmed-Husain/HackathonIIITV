@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Marketing Quiz</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lavenderblush;
+    }
+    
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+      font-size: large;
+    }
+    
+    #quiz {
+      margin-bottom: 20px;
+    }
+    
+    .question {
+      margin-bottom: 10px;
+    }
+    
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    #results {
+      margin-top: 20px;
+    }
+    .topic{
+        text-align: center;
+        text-decoration:underline;
+        color: blue;
+        font-size: 40px;
+    }
+    </style>
+    
+<!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+    
+    <h1 class="topic">Quiz on Financial Marketing</h1>
+<div class="quiz-container">
+  <div id="quiz"></div>
+  <button id="submit">Submit</button>
+</div>
+<div id="results"></div>
+<script>
+    //JavaScript (quiz.js):
+    
+    //javascript
+    const quizData = [
+      {
+        question: 'Q.1 Which entities ensure market integrity, transparency, and investor protection in derivatives markets?',
+        options: ['Government agencies and regulatory bodies', 'Central banks only', 'Retail traders and corporations', 'Market makers and speculators'],
+        answer: 'Government agencies and regulatory bodies'
+      },
+      {
+        question: 'Q.2 What is the main role of corporations in financial markets?',
+        options: ['Issuing stocks or bonds', ' Providing liquidity', 'Quoting buy and sell prices', ' Enforcing rules and regulations'],
+        answer: 'Issuing stocks or bonds'
+      },
+      {
+        question: 'Q.3 Which of the following market participants are known for investing substantial amounts of money on behalf of their clients or shareholders?',
+        options: ['Institutional investors', 'Retail investors', 'Hobbyists', 'Individual investors'],
+        answer: 'Institutional investors'
+      },
+      {
+        question: 'Q.4 Who are the key participants involved in the foreign exchange (forex) market?',
+        options: ['Government agencies and market specialistss', 'Retail traders and speculators only', 'Banks, corporations, hedge funds, and retail traders', ' Central banks and governments only'],
+        answer: 'Banks, corporations, hedge funds, and retail traders'
+      },
+      {
+        question: 'Q.5 What is the primary function of banks and financial institutions in financial markets?',
+        options: ['Invest substantial sums of money on behalf of clients', 'Trade financial assets for personal gain', 'Manage personal portfolios for individuals', 'Facilitate transactions and provide liquidity'],
+        answer: 'Facilitate transactions and provide liquidity'
+      },
+      {
+        question: 'Q.6 What is the primary reason for banks and financial institutions to participate in financial markets?',
+        options: ['To engage in lending, borrowing, and proprietary trading', 'To oversee financial markets', 'To facilitate trading by quoting buy and sell prices', 'To issue stocks and bonds'],
+        answer: 'To engage in lending, borrowing, and proprietary trading'
+      },
+      {
+        question: 'Q.7 What role do banks play in the foreign exchange (forex) market?',
+        options: ['Providing oversight to government agencies', 'Setting margin requirements for traders', 'Acting as intermediaries in currency trading', 'Regulating hedge funds in the market'],
+        answer: 'Acting as intermediaries in currency trading'
+      },
+      {
+        question: 'Q.8 13. What role do banks and financial institutions play in financial markets?',
+        options: ['Provide liquidity, facilitate transactions, and offer financial services', 'Trade financial assets for personal investment purposes', 'Offer personal investment services to retail investors', 'Manage large sums of money on behalf of clients'],
+        answer: 'Provide liquidity, facilitate transactions, and offer financial services'
+      },
+      {
+        question: 'Q.9  Which type of participants engage in buying, selling, or trading financial assets within various markets?',
+        options: ['Corporations', 'Market participants', 'Market makers and specialists', 'Regulators and government agencies'],
+        answer: 'Market participants'
+      },
+      {
+        question: 'Q.10 What are some of the purposes for which participants trade currencies in the forex market?',
+        options: ['For international trade and investment', 'To speculate on stock prices', 'To regulate margin requirements', 'To manage derivatives clearinghouses'],
+        answer: 'For international trade and investment'
+      }
+    ];
+    const quizContainer = document.getElementById('quiz');
+    const submitButton = document.getElementById('submit');
+    const resultsContainer = document.getElementById('results');
+    
+    function buildQuiz() {
+      const output = [];
+    
+      quizData.forEach((currentQuestion, questionNumber) => {
+        const options = [];
+    
+        for (const option of currentQuestion.options) {
+          options.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${option}">
+              ${option}
+            </label>`
+          );
+        }
+    
+        output.push(
+          `<div class="question"><br>${currentQuestion.question}</div>
+          <div class="options">${options.join('')}</div>`
+        );
+      });
+    
+      quizContainer.innerHTML = output.join('');
+    }
+    
+    function showResults() {
+      const answerContainers = quizContainer.querySelectorAll('.options');
+      let score = 0;
+    
+      quizData.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selectedOption = answerContainer.querySelector(`input[name="question${questionNumber}"]:checked`).value;
+    
+        if (selectedOption === currentQuestion.answer) {
+          score++;
+        }
+      });
+    
+      resultsContainer.innerHTML = `You scored ${score} out of ${quizData.length}`;
+    }
+    
+    buildQuiz();
+    
+    submitButton.addEventListener('click', showResults);
+    </script>
+    
+<!-- <script src="quiz.js"></script> -->
+</body>
+</html>
+
+
+<!-- CSS (styles.css): -->
+
+<!-- css -->
+
+
+<!-- This is a simple quiz app with three questions. You can expand it by adding more questions to the quizData array in the JavaScript file. -->

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Risk Management Quiz</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lavenderblush;
+    }
+    
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+      font-size: large;
+    }
+    
+    #quiz {
+      margin-bottom: 20px;
+    }
+    
+    .question {
+      margin-bottom: 10px;
+    }
+    
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    #results {
+      margin-top: 20px;
+    }
+    .topic{
+        text-align: center;
+        text-decoration:underline;
+        color: blue;
+        font-size: 40px;
+    }
+    </style>
+    
+<!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+    
+    <h1 class="topic">Quiz on Financial Risk Management</h1>
+<div class="quiz-container">
+  <div id="quiz"></div>
+  <button id="submit">Submit</button>
+</div>
+<div id="results"></div>
+<script>
+    //JavaScript (quiz.js):
+    
+    //javascript
+    const quizData = [
+      {
+        question: 'Q.1) What is the key focus of the process of credit risk management?',
+        options: ['Identifying and categorizing credit risks faced by organizations', 'Developing strategies to manage or mitigate credit risks effectively', 'Assessing risk exposure based on factors like default probability and potential losses', 'Quantifying and measuring potential losses associated with credit exposures'],
+        answer: 'Identifying and categorizing credit risks faced by organizations'
+      },
+      {
+        question: 'Q.2 What factors are used to assess credit risks in organizations?',
+        options: ['Industry trends and financial statements', 'Probability of default', 'Severity of potential losses', 'Impact on profitability and capital adequacy'],
+        answer: 'Industry trends and financial statements'
+      },
+      {
+        question: 'Q.3 In the process of credit risk management, what do organizations do after identifying different types of credit risks?',
+        options: ['Develop strategies to manage or mitigate credit risks effectively', 'Quantify and measure potential losses associated with credit exposures', 'HAssess the overall level of credit risk in portfolios', 'Set appropriate limits on credit exposures'],
+        answer: 'Quantify and measure potential losses associated with credit exposures'
+      },
+      {
+        question: 'Q.4 What is the purpose of implementing credit enhancement measures like collateral or guarantees?',
+        options: ['To increase the credit risk', 'To eliminate the need for credit approval processes', 'To avoid underwriting standards', ' To transfer risk to other parties'],
+        answer: 'To transfer risk to other parties'
+      },
+      {
+        question: 'Q.5 Why is effective communication of credit risk exposures important for stakeholders?',
+        options: ['To hide potential risks from senior management', 'To avoid safeguarding financial assets', 'To provide regular reports and updates on credit risk metrics', 'To confuse investors and regulators'],
+        answer: 'To provide regular reports and updates on credit risk metrics'
+      },
+      {
+        question: 'Q.6 In liquidity risk management, what can lead to the risk of default?',
+        options: ['Maintaining adequate liquidity reserves', 'Funding mismatches', 'Diversifying funding sources', 'Reliance on stable funding sources'],
+        answer: 'Funding mismatches'
+      },
+      {
+        question: 'Q.7 What can make it difficult to convert assets into cash quickly or efficiently?',
+        options: ['Balanced assets and liabilities', 'Stable funding sources', 'Funding mismatches', 'Diversified funding sources'],
+        answer: 'Funding mismatches'
+      },
+      {
+        question: 'Q.8 What is a common measure used to diversify credit exposures mentioned in the text?',
+        options: ['Maintaining credit exposure to a single borrower', 'Spreading credit exposures across different borrowers, industries, and geographic regions', 'Providing collateral only for high-risk borrowers', 'Increasing the interest rate on loans'],
+        answer: 'Spreading credit exposures across different borrowers, industries, and geographic regions'
+      },
+      {
+        question: 'Q.9 Why is conducting thorough due diligence important in credit risk management?',
+        options: ['To align credit exposures with risk management objectives', 'To ignore borrower financial stability', 'To avoid setting appropriate terms and conditions', 'To overlook potential risks'],
+        answer: 'To align credit exposures with risk management objectives'
+      },
+      { 
+        question: 'Q.10 What is the main focus of liquidity risk management?',
+        options: ['Enhancing stakeholder confidence', ' Converting assets into cash efficiently', 'Minimizing losses', 'Meeting short-term financial obligations promptly'],
+        answer: 'Meeting short-term financial obligations promptly'
+      }
+    ];
+    const quizContainer = document.getElementById('quiz');
+    const submitButton = document.getElementById('submit');
+    const resultsContainer = document.getElementById('results');
+    
+    function buildQuiz() {
+      const output = [];
+    
+      quizData.forEach((currentQuestion, questionNumber) => {
+        const options = [];
+    
+        for (const option of currentQuestion.options) {
+          options.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${option}">
+              ${option}
+            </label>`
+          );
+        }
+    
+        output.push(
+          `<div class="question"><br>${currentQuestion.question}</div>
+          <div class="options">${options.join('')}</div>`
+        );
+      });
+    
+      quizContainer.innerHTML = output.join('');
+    }
+    
+    function showResults() {
+      const answerContainers = quizContainer.querySelectorAll('.options');
+      let score = 0;
+    
+      quizData.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selectedOption = answerContainer.querySelector(`input[name="question${questionNumber}"]:checked`).value;
+    
+        if (selectedOption === currentQuestion.answer) {
+          score++;
+        }
+      });
+    
+      resultsContainer.innerHTML = `You scored ${score} out of ${quizData.length}`;
+    }
+    
+    buildQuiz();
+    
+    submitButton.addEventListener('click', showResults);
+    </script>
+    
+<!-- <script src="quiz.js"></script> -->
+</body>
+</html>
+
+
+<!-- CSS (styles.css): -->
+
+<!-- css -->
+
+
+<!-- This is a simple quiz app with three questions. You can expand it by adding more questions to the quizData array in the JavaScript file. -->
